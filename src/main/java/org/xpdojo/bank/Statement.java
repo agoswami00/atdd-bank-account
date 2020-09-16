@@ -22,5 +22,5 @@ import java.io.Writer;
 
 interface Statement {
 
-	void write(Account account, Writer writer) throws IOException;
+	void create(Account account, Writer writer) throws IOException;
 }

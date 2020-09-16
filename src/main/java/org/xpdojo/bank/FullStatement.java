@@ -25,23 +25,19 @@ import static java.time.LocalDateTime.ofInstant;
 import static java.time.ZoneOffset.UTC;
 import static java.time.format.DateTimeFormatter.ofPattern;
 
-public class BalanceStatement implements Statement {
+public class FullStatement implements Statement {
 
 	private static final int MAX_WIDTH = 30;
     private static final String NEW_LINE = System.getProperty("line.separator");
 
     private final Clock clock;
 
-	public BalanceStatement(Clock clock) {
+	public FullStatement(Clock clock) {
 		this.clock = clock;
 	}
 
 	@Override
-	public void create(Account account, Writer writer) throws IOException {
-		write(account, writer);
-	}
-
-	public void write(Account account, Writer writer) throws IOException  {
+	public void create(Account account, Writer writer) throws IOException  {
 		writer.append(header());
 		writer.append(preamble(clock.now()));
 		writer.append(balance(account));
